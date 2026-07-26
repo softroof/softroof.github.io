@@ -113,8 +113,8 @@
     .sections-area { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
     .menu-section { display:none; grid-column:1 / -1; }
     .menu-section.active-section { display:block; }
-    .menu-section .menu-items-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    @media (min-width:769px) { .menu-section .menu-items-grid { padding:0 15rem; } }
+    .menu-section .menu-items-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1rem; }
+    @media (min-width:769px) { .menu-section .menu-items-grid { padding:0 8rem; } }
     .menu-card { background:var(--bg-card); backdrop-filter:blur(2px); border-radius:24px; padding:0.8rem 0.5rem; border:1px solid var(--border-card); transition:all 0.25s; box-shadow:var(--shadow-card); display:flex; flex-direction:column; align-items:center; text-align:center; gap:0.25rem; width:100%; height:100%; }
     .menu-card:hover { background:var(--bg-card-hover); border-color:var(--border-card-hover); transform:translateY(-3px); box-shadow:var(--shadow-card-hover); }
     .menu-item-img { width:100%; aspect-ratio:1/1; border-radius:16px; object-fit:cover; flex-shrink:0; border:2px solid var(--border-card); background:var(--bg-body); transition:border-color 0.3s, transform 0.2s; margin-bottom:0.1rem; max-width:100%; }
@@ -147,10 +147,12 @@
     body.rtl .scroll-hint-right { background:var(--hint-left); right:auto; left:0; }
     body.rtl .back-top { right:auto; left:24px; }
     /* responsive */
-    @media (max-width:768px) { .menu-section .menu-items-grid { padding:0 0.3rem; } }
+    @media (max-width:768px) {
+      .menu-section .menu-items-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); padding:0 0.3rem; }
+    }
     @media (max-width:480px) {
       .sections-area { grid-template-columns:1fr; gap:0.8rem; }
-      .menu-section .menu-items-grid { gap:0.6rem; padding:0 0.3rem; }
+      .menu-section .menu-items-grid { grid-template-columns:1fr; gap:0.6rem; padding:0 0.3rem; }
       .logo-img { width:120px; height:120px; }
       .cafe-name { font-size:1.3rem; }
       .controls-wrapper { gap:0.4rem; }
@@ -343,7 +345,7 @@
         { id:"matcha", label:"Matcha", title:"مايتشا", category:"drink", items:[
           { name:"Iced Matcha Latte", desc:"Iced Matcha Latte", price:"120", image:"https://vancouverwithlove.com/wp-content/uploads/2025/03/iced-matcha-latte-8-1097x1536.jpg" },
           { name:"Matcha Coconut", desc:"Matcha Coconut", price:"120", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRovEXcVTgDCKOdQKU4AORYhdVxifxL7l7e4KHImyTy_328lj_O2Sz4k4q9&s=10" },
-          { name:"Hot Matcha", desc:"Hot Matcha", price:"100", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYr67OuD1Xhe1ZhwhP7DrNK5OURNzfjTbNEGtX5H4iQYiZoRBHZBVFuA1l&s=10" },
+          { name:"Iced Matcha", desc:"Hot Matcha", price:"100", image:"https://vancouverwithlove.com/wp-content/uploads/2025/03/iced-matcha-latte-8-1097x1536.jpg" },
           { name:"Spanish Matcha", desc:"Spanish Matcha", price:"100", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1DqJ5Y71mk0oaQnEd0g5YInp_nkl655vnxbjMHTcADIfcr2HWWJrehX8&s=10" }
         ]},
         { id:"milkshake", label:"Milkshake", title:"ميلك شيك", category:"drink", items:[
@@ -385,7 +387,8 @@
           { name:"Lychee Booba", desc:"بووبا لايتشي", price:"00" }
         ]},
         { id:"ice-cream", label:"Ice Cream", title:"آيس كريم", category:"food", items:[
-          { name:"Chocolate Ice Cream", desc:"آيس كريم شوكولاتة", price:"30", image:"https://www.koueider.com/_next/image?url=https%3A%2F%2Fdashboard.koueider.com%2Fstorage%2Fmedia%2Fa5e6565f-b2e9-470d-ab47-0164e442ecba.webp&w=640&q=70" },
+          { name:" Ice Cream one scoop Chocolate / vanillia ", desc:"آيس كريم شوكولاتة", price:"30", image:"https://www.koueider.com/_next/image?url=https%3A%2F%2Fdashboard.koueider.com%2Fstorage%2Fmedia%2Fa5e6565f-b2e9-470d-ab47-0164e442ecba.webp&w=640&q=70" },
+          { name:"Ice Cream one scoop Chocolate / vanillia ", desc:"آيس كريم شوكولاتة", price:"65", image:"https://www.koueider.com/_next/image?url=https%3A%2F%2Fdashboard.koueider.com%2Fstorage%2Fmedia%2Fa5e6565f-b2e9-470d-ab47-0164e442ecba.webp&w=640&q=70" },
           { name:"Mango Ice Cream", desc:"آيس كريم مانجو", price:"30", image:"https://www.koueider.com/_next/image?url=https%3A%2F%2Fdashboard.koueider.com%2Fstorage%2Fmedia%2F66f07109-0f73-4622-ad73-fd7cfed42d73.webp&w=640&q=70" },
           { name:"Vanilla Ice Cream", desc:"آيس كريم فانيليا", price:"30", image:"https://www.koueider.com/_next/image?url=https%3A%2F%2Fdashboard.koueider.com%2Fstorage%2Fmedia%2Fb8e4ad7a-c14e-4804-bf08-875d0b0a94e6.webp&w=640&q=70" },
           { name:"Strawberry Ice Cream", desc:"آيس كريم فراولة", price:"30", image:"https://www.koueider.com/_next/image?url=https%3A%2F%2Fdashboard.koueider.com%2Fstorage%2Fmedia%2F9b9aa05f-ce38-4750-bb38-8e2f22a10d49.webp&w=640&q=70" }
@@ -427,10 +430,10 @@
         ]},
         // ====== Croissants (محدَّث بالشروح الكاملة) ======
         { id:"croissants", label:"Croissants", title:"كرواسون", category:"food", items:[
-          { name:"Butter croissant with grilled chicken, lettuce, parmesan & Caesar dressing.", desc:"كرواسون بالزبدة مع دجاج مشوي، خس، بارميزان وصوص سيزر.", price:"00" },
-          { name:"Butter croissant with smoked turkey, cheddar cheese & fresh lettuce.", desc:"كرواسون بالزبدة مع تركي مدخن، جبنة شيدر وخس طازج.", price:"00" },
-          { name:"Butter croissant with roast beef, cheddar cheese, lettuce & honey mustard.", desc:"كرواسون بالزبدة مع روست بيف، شيدر، خس وصوص هاني ماسترد.", price:"00" },
-          { name:"Butter croissant with tuna mix, lettuce & pickles.", desc:"كرواسون بالزبدة مع تونة، خس ومخلل.", price:"00" }
+          { name:"Butter croissant with grilled chicken, lettuce, parmesan & Caesar dressing.", desc:"كرواسون بالزبدة مع دجاج مشوي، خس، بارميزان وصوص سيزر.", price:"00", image:"https://www.mcdonalds.eg/Cms_Data/Contents/En/Media/images/700x474-PC.png" },
+          { name:"Butter croissant with smoked turkey, cheddar cheese & fresh lettuce.", desc:"كرواسون بالزبدة مع تركي مدخن، جبنة شيدر وخس طازج.", price:"00", image:"https://www.mcdonalds.eg/Cms_Data/Contents/En/Media/images/700x474-PC.png" },
+          { name:"Butter croissant with roast beef, cheddar cheese, lettuce & honey mustard.", desc:"كرواسون بالزبدة مع روست بيف، شيدر، خس وصوص هاني ماسترد.", price:"00", image:"https://www.mcdonalds.eg/Cms_Data/Contents/En/Media/images/700x474-PC.png" },
+          { name:"Butter croissant with tuna mix, lettuce & pickles.", desc:"كرواسون بالزبدة مع تونة، خس ومخلل.", price:"00", image:"https://www.mcdonalds.eg/Cms_Data/Contents/En/Media/images/700x474-PC.png" }
         ]}
       ]
     };
