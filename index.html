@@ -120,7 +120,8 @@
     .menu-item-img { width:100%; aspect-ratio:1/1; border-radius:16px; object-fit:cover; flex-shrink:0; border:2px solid var(--border-card); background:var(--bg-body); transition:border-color 0.3s, transform 0.2s; margin-bottom:0.1rem; max-width:100%; }
     .menu-card:hover .menu-item-img { border-color:var(--border-card-hover); transform:scale(1.02); }
     .item-name { font-size:1.1rem; font-weight:700; color:var(--text-heading); letter-spacing:-0.2px; text-align:center; width:100%; word-break:break-word; line-height:1.3; }
-    .price { font-size:1.8rem; font-weight:900; color:var(--text-price); background:var(--price-bg); padding:0.3rem 1.2rem; border-radius:50px; white-space:nowrap; border:2px solid var(--border-card); box-shadow:0 2px 8px rgba(0,0,0,0.05); line-height:1.3; display:inline-block; margin-top:0.1rem; letter-spacing:0.5px; width:100%; max-width:140px; transition:background 0.3s, color 0.3s, border-color 0.3s; }
+    .price { font-size:1.5rem; font-weight:900; color:var(--text-price); background:var(--price-bg); padding:0.3rem 0rem; border-radius:50px; white-space:normal; word-break:break-word; overflow-wrap:anywhere; border:2px solid var(--border-card); box-shadow:0 2px 8px rgba(0,0,0,0.05); line-height:1.3; display:inline-block; text-align:center; margin-top:0.1rem; letter-spacing:0.5px; width:100%; max-width:130px; transition:background 0.3s, color 0.3s, border-color 0.3s; }
+    .price .currency { font-size:0.85em; font-weight:700; display:inline-block; margin-left:0.25rem; vertical-align:middle; }
     .section-title { font-size:1.5rem; font-weight:700; margin-bottom:1rem; color:var(--text-heading); border-left:5px solid #c07060; padding-left:0.8rem; text-shadow:0 1px 1px rgba(255,200,180,0.3); transition:color 0.3s, border-color 0.3s; }
     body.dark-mode .section-title { border-left-color:#8a5040; }
     body.rtl .section-title { border-left:none; border-right:5px solid #c07060; padding-left:0; padding-right:0.8rem; }
@@ -164,7 +165,7 @@
       body.rtl .section-title { padding-right:0.6rem; }
       .menu-item-img { aspect-ratio:1/1; border-radius:12px; }
       .item-name { font-size:0.9rem; }
-      .price { font-size:1.5rem; padding:0.2rem 0.8rem; max-width:120px; }
+      .price { font-size:1.25rem; padding:0.2rem 0.8rem; max-width:110px; white-space:normal; word-break:break-word; overflow-wrap:anywhere; }
       .menu-card { padding:0.5rem 0.3rem; gap:0.15rem; border-radius:16px; }
       .owner-strip img { width:120px; height:120px; }
       .nav-tab { font-size:0.95rem; padding:0.55rem 1rem; min-width:180px; }
@@ -174,7 +175,7 @@
     @media (max-width:380px) {
       .menu-item-img { aspect-ratio:1/1; }
       .item-name { font-size:0.8rem; }
-      .price { font-size:1.3rem; padding:0.15rem 0.6rem; max-width:100px; }
+      .price { font-size:1rem; padding:0.15rem 0.6rem; max-width:100px; white-space:normal; word-break:break-word; overflow-wrap:anywhere; }
       .menu-card { padding:0.4rem 0.2rem; border-radius:12px; }
       .menu-section .menu-items-grid { gap:0.4rem; padding:0 0.2rem; }
     }
@@ -202,7 +203,7 @@
           <a href="https://www.tiktok.com/@soft..roof?_r=1&_t=ZS-98JBVTe0z00" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
           <a href="https://www.instagram.com/softroof_/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://wa.me/201119555996?text=Hello%2C%20I%20would%20like%20to%20know%20more." class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61592133556986" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
           <a href="https://maps.app.goo.gl/ehAvxiECQ1Xmc8uv9" class="social-icon" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
           <a href="https://wa.me/201119555996" class="social-icon" target="_blank"><i class="fas fa-phone-alt"></i></a>
         </div>
@@ -396,8 +397,8 @@
         { id:"dessert", label:"Dessert", title:"حلويات", category:"food", items:[
           { name:"Molten cake", desc:"مولتن كيك", price:"100", image:"https://strella-egy.com/wp-content/uploads/2026/03/Molten-Cake-3.jpeg" },
           { name:"Brownies", desc:"براونيز", price:"85", image:"https://drive.google.com/thumbnail?id=1StgK2hE30-3wS_rgk_DBNZCBKUduCxCb&sz=s800" },
-          { name:"Chocolate Cake", desc:"كيكة الشوكولاتة", price:"50", image:"https://i.etsystatic.com/16237790/r/il/591da5/5840470695/il_fullxfull.5840470695_gwx4.jpg" },
-          { name:"Tiramisu", desc:"تيراميسو", price:"60", image:"https://i.etsystatic.com/16237790/r/il/591da5/5840470695/il_fullxfull.5840470695_gwx4.jpg" },
+          { name:"Chocolate Cake", desc:"كيكة الشوكولاتة", price:"125", image:"https://strella-egy.com/wp-content/uploads/2026/03/Chocolate-Cake-3-300x300.jpeg" },
+          { name:"Red Velvet Cake", desc:"تيراميسو", price:"125", image:"https://strella-egy.com/wp-content/uploads/2026/03/Red-Velvet-Cake-3-300x300.jpeg" },
           { name:"Brownie", desc:"براوني", price:"40", image:"https://i.etsystatic.com/16237790/r/il/591da5/5840470695/il_fullxfull.5840470695_gwx4.jpg" },
           { name:"Fruit Tart", desc:"تارت الفواكه", price:"48", image:"https://i.etsystatic.com/16237790/r/il/591da5/5840470695/il_fullxfull.5840470695_gwx4.jpg" },
           { name:"Baklava", desc:"بقلاوة", price:"35", image:"https://i.etsystatic.com/16237790/r/il/591da5/5840470695/il_fullxfull.5840470695_gwx4.jpg" },
@@ -430,10 +431,10 @@
         ]},
         // ====== Croissants (محدَّث بالشروح الكاملة) ======
         { id:"croissants", label:"Croissants", title:"كرواسون", category:"food", items:[
-          { name:"Butter croissant with grilled chicken, lettuce, parmesan & Caesar dressing.", desc:"كرواسون بالزبدة مع دجاج مشوي، خس، بارميزان وصوص سيزر.", price:"00", image:"https://drive.google.com/thumbnail?id=1tHX7l03yckksxsZ1KaOdRC8osneEJFsM&sz=s800" },
-          { name:"Butter croissant with smoked turkey, cheddar cheese & fresh lettuce.", desc:"كرواسون بالزبدة مع تركي مدخن، جبنة شيدر وخس طازج.", price:"00", image:"https://drive.google.com/thumbnail?id=1AH03TmMOHE4-drt6Ft0ihRLO5CGfPgOS&sz=s800" },
-          { name:"Butter croissant with roast beef, cheddar cheese, lettuce & honey mustard.", desc:"كرواسون بالزبدة مع روست بيف، شيدر، خس وصوص هاني ماسترد.", price:"00", image:"https://drive.google.com/thumbnail?id=1AgXZ1vztfUR6SGnQAtBCJkmOLgaNczRT&sz=s800" },
-          { name:"Butter croissant with tuna mix, lettuce & pickles.", desc:"كرواسون بالزبدة مع تونة، خس ومخلل.", price:"00", image:"https://drive.google.com/thumbnail?id=1i3OMTdS1exkLFEBWkHnRt8rDQjXAswA-&sz=s800" }
+          { name:"Butter croissant with grilled chicken, lettuce, parmesan & Caesar dressing.", desc:"كرواسون بالزبدة مع دجاج مشوي، خس، بارميزان وصوص سيزر.", price:"soon", image:"https://drive.google.com/thumbnail?id=1tHX7l03yckksxsZ1KaOdRC8osneEJFsM&sz=s800" },
+          { name:"Butter croissant with smoked turkey, cheddar cheese & fresh lettuce.", desc:"كرواسون بالزبدة مع تركي مدخن، جبنة شيدر وخس طازج.", price:"soon", image:"https://drive.google.com/thumbnail?id=1AH03TmMOHE4-drt6Ft0ihRLO5CGfPgOS&sz=s800" },
+          { name:"Butter croissant with roast beef, cheddar cheese, lettuce & honey mustard.", desc:"كرواسون بالزبدة مع روست بيف، شيدر، خس وصوص هاني ماسترد.", price:"soon", image:"https://drive.google.com/thumbnail?id=1AgXZ1vztfUR6SGnQAtBCJkmOLgaNczRT&sz=s800" },
+          { name:"Butter croissant with tuna mix, lettuce & pickles.", desc:"كرواسون بالزبدة مع تونة، خس ومخلل.", price:"soon", image:"https://drive.google.com/thumbnail?id=1i3OMTdS1exkLFEBWkHnRt8rDQjXAswA-&sz=s800" }
         ]}
       ]
     };
@@ -510,7 +511,17 @@
           const priceSpan = document.createElement('div');
           priceSpan.className = 'price';
           const priceValue = String(item.price ?? '0').trim();
-          priceSpan.textContent = priceValue === '00' ? '00' : (priceValue + ' EGP');
+          if (priceValue === '00') {
+            priceSpan.textContent = '00';
+          } else {
+            const amountSpan = document.createElement('span');
+            amountSpan.textContent = priceValue;
+            const currencySpan = document.createElement('span');
+            currencySpan.className = 'currency';
+            currencySpan.textContent = 'EGP';
+            priceSpan.appendChild(amountSpan);
+            priceSpan.appendChild(currencySpan);
+          }
           card.appendChild(priceSpan);
           grid.appendChild(card);
         });
