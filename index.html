@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /></noscript>
     <style>
-        /* ----- reset & variables (optimized) ----- */
+        /* ----- reset & variables ----- */
         * {
             margin: 0;
             padding: 0;
@@ -144,7 +144,93 @@
             overflow-x: hidden;
             will-change: background, color;
         }
-        /* ----- optimized header ----- */
+
+        /* ============================================================
+                   SCROLL REVEAL ANIMATIONS (Premium)
+                   ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Stagger delays (applied via JS or inline style) */
+        .reveal-stagger {
+            transition-delay: 0.05s;
+        }
+        .reveal-stagger-1 { transition-delay: 0.05s; }
+        .reveal-stagger-2 { transition-delay: 0.12s; }
+        .reveal-stagger-3 { transition-delay: 0.19s; }
+        .reveal-stagger-4 { transition-delay: 0.26s; }
+        .reveal-stagger-5 { transition-delay: 0.33s; }
+        .reveal-stagger-6 { transition-delay: 0.40s; }
+        .reveal-stagger-7 { transition-delay: 0.47s; }
+        .reveal-stagger-8 { transition-delay: 0.54s; }
+
+        /* Special: image zoom reveal */
+        .reveal-img {
+            opacity: 0;
+            transform: scale(0.92) translateY(10px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-img.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Card elevation on reveal */
+        .reveal-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity, box-shadow;
+        }
+        .reveal-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Title reveal (slide from left/right) */
+        .reveal-title {
+            opacity: 0;
+            transform: translateX(-20px) scale(0.98);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        body.rtl .reveal-title {
+            transform: translateX(20px) scale(0.98);
+        }
+        .reveal-title.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        /* Button reveal (scale + fade) */
+        .reveal-btn {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .reveal-btn.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* ----- header ----- */
         .header-bg {
             position: relative;
             background: var(--bg-header);
@@ -554,10 +640,8 @@
             gap: 0.25rem;
             width: 100%;
             height: 100%;
-            will-change: transform;
-            opacity: 0;
-            transform: translateY(20px) scale(0.96);
-            animation: cardFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            will-change: transform, box-shadow;
+            /* removed default animation, now using reveal-card */
         }
         .menu-card:hover {
             background: var(--bg-card-hover);
@@ -567,12 +651,6 @@
         }
         .menu-card:active {
             transform: scale(0.97);
-        }
-        @keyframes cardFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
         }
         .menu-item-img {
             width: 100%;
@@ -586,11 +664,6 @@
             margin-bottom: 0.1rem;
             max-width: 100%;
             will-change: transform;
-            opacity: 0;
-            animation: imgFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-        }
-        @keyframes imgFadeIn {
-            to { opacity: 1; }
         }
         .menu-card:hover .menu-item-img {
             border-color: var(--border-card-hover);
@@ -948,7 +1021,8 @@
             position: relative;
             opacity: 0;
             transform: scale(0.92) translateY(20px);
-            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             text-align: center;
         }
         .modal-close {
@@ -1077,11 +1151,11 @@
     <div class="header-bg">
         <div class="header-content">
             <div class="cafe-container">
-                <div class="controls-wrapper">
+                <div class="controls-wrapper reveal reveal-stagger-1">
                     <button id="langToggleBtn" class="lang-toggle"><i class="fas fa-globe"></i><span id="langToggleText">English / العربية</span></button>
                     <button id="darkToggleBtn" class="dark-toggle"><i class="fas fa-moon"></i><span id="darkToggleText">Light</span></button>
                 </div>
-                <div class="logo-block">
+                <div class="logo-block reveal reveal-stagger-2">
                     <div class="logo-owner-row">
                         <img src="https://drive.google.com/thumbnail?id=1rTSYhjleDXsCg_pBK9UtUJm1BI2srEOe&sz=s800" alt="soft roof cafe" class="logo-img" id="mainLogo" loading="lazy" />
                     </div>
@@ -1089,7 +1163,7 @@
                     <div class="cafe-name" id="cafeNameEl">Soft Roof Cafe</div>
                     <div class="tagline" id="taglineEl">specialty drinks · cozy vibes</div>
                 </div>
-                <div class="social-links">
+                <div class="social-links reveal reveal-stagger-3">
                     <a href="https://www.tiktok.com/@soft..roof?_r=1&_t=ZS-98JBVTe0z00" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
                     <a href="https://www.instagram.com/softroof_/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://wa.me/201119555996?text=Hello%2C%20I%20would%20like%20to%20know%20more." class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -1097,7 +1171,7 @@
                     <a href="https://maps.app.goo.gl/ehAvxiECQ1Xmc8uv9" class="social-icon" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
                     <a href="https://wa.me/201119555996" class="social-icon" target="_blank"><i class="fas fa-phone-alt"></i></a>
                 </div>
-                <div class="owner-strip">
+                <div class="owner-strip reveal reveal-stagger-4">
                     <span><span class="highlight" id="ownerHighlight">Owner by Atito</span></span>
                     <button class="owner-btn-small" id="ownerBtn"><span id="ownerBtnText">Owner Page</span></button>
                 </div>
@@ -1732,7 +1806,7 @@
         }
 
         // ========================================================================
-        //  RENDER MENU
+        //  RENDER MENU (with reveal classes)
         // ========================================================================
         function renderMenu() {
             const sectionsArea = document.getElementById('sectionsArea');
@@ -1751,7 +1825,6 @@
                 return false;
             });
 
-            // Use DocumentFragment for better performance
             const fragment = document.createDocumentFragment();
 
             filtered.forEach(cat => {
@@ -1760,7 +1833,7 @@
                 sec.dataset.sectionId = cat.id;
 
                 const title = document.createElement('h3');
-                title.className = 'section-title';
+                title.className = 'section-title reveal-title';
                 title.textContent = getCategoryDisplayName(cat);
                 sec.appendChild(title);
 
@@ -1769,16 +1842,18 @@
 
                 (cat.items || []).forEach((item, idx) => {
                     const card = document.createElement('div');
-                    card.className = 'menu-card';
-                    // Stagger animation delay
-                    card.style.animationDelay = (idx * 0.05) + 's';
+                    card.className = 'menu-card reveal-card';
+                    // Stagger delay via inline style (max 8 steps)
+                    const delay = Math.min(idx * 0.07, 0.5);
+                    card.style.transitionDelay = delay + 's';
 
                     const img = document.createElement('img');
                     img.src = getItemImage(item);
                     img.alt = getItemName(item);
-                    img.className = 'menu-item-img';
+                    img.className = 'menu-item-img reveal-img';
                     img.loading = 'lazy';
                     img.decoding = 'async';
+                    img.style.transitionDelay = (delay + 0.05) + 's';
                     img.onerror = function() {
                         this.src = `https://picsum.photos/seed/${encodeURIComponent(item.name)}/400/400`;
                     };
@@ -1826,8 +1901,44 @@
             }
 
             if (!scrollHintAnimationShown) setTimeout(triggerScrollHint, 500);
+
+            // Re-initialize Intersection Observer for new elements
+            initScrollReveal();
         }
 
+        // ========================================================================
+        //  SCROLL REVEAL (Intersection Observer)
+        // ========================================================================
+        let observer = null;
+
+        function initScrollReveal() {
+            // Disconnect old observer if exists
+            if (observer) {
+                observer.disconnect();
+            }
+
+            const elements = document.querySelectorAll('.reveal, .reveal-card, .reveal-img, .reveal-title, .reveal-btn');
+            if (!elements.length) return;
+
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Unobserve after animation to save resources
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // ========================================================================
+        //  NAV BUTTONS (with reveal)
+        // ========================================================================
         function rebuildNavButtons() {
             const container = document.getElementById('categoryButtons');
             if (!container || !currentMenuData) return;
@@ -1844,8 +1955,9 @@
 
             filtered.forEach((cat, idx) => {
                 const btn = document.createElement('button');
-                btn.className = 'cat-btn' + (idx === 0 ? ' active' : '');
+                btn.className = 'cat-btn reveal-btn' + (idx === 0 ? ' active' : '');
                 btn.textContent = getCategoryDisplayName(cat);
+                btn.style.transitionDelay = (idx * 0.05) + 's';
                 btn.addEventListener('click', () => {
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
@@ -1880,8 +1992,14 @@
                     }
                 });
             }
+
+            // Observe new buttons
+            setTimeout(initScrollReveal, 50);
         }
 
+        // ========================================================================
+        //  TRIGGER SCROLL HINT
+        // ========================================================================
         function triggerScrollHint() {
             if (scrollHintAnimationShown) return;
             const scrollDiv = document.getElementById('scrollMenuContainer');
@@ -1929,6 +2047,8 @@
             currentMenuData = EMBEDDED_MENU.menuCatalog;
             renderMenu();
             applyStaticTranslations();
+            // init observer after DOM is ready
+            setTimeout(initScrollReveal, 100);
         }
 
         // ========================================================================
@@ -1942,6 +2062,7 @@
             const t = currentLanguage === 'ar' ? TRANSLATIONS.ar : TRANSLATIONS.en;
             const darkText = document.getElementById('darkToggleText');
             if (darkText) darkText.textContent = darkMode ? t.darkOn : t.darkOff;
+            setTimeout(initScrollReveal, 100);
         }
 
         // ========================================================================
@@ -1988,6 +2109,7 @@
                 t.classList.toggle('active', t.dataset.tab === tab);
             });
             if (currentMenuData) renderMenu();
+            setTimeout(initScrollReveal, 100);
         }
 
         // ========================================================================
@@ -2011,7 +2133,7 @@
         });
 
         // ========================================================================
-        //  DRAG SCROLL (optimized)
+        //  DRAG SCROLL
         // ========================================================================
         function enableDragScroll() {
             const slider = document.getElementById('scrollMenuContainer');
@@ -2039,10 +2161,10 @@
         }
 
         // ========================================================================
-        //  STICKY DETECTION (optimized)
+        //  STICKY DETECTION
         // ========================================================================
         const stickyNav = document.getElementById('stickyNav');
-        const observer = new IntersectionObserver(([e]) => {
+        const observerSticky = new IntersectionObserver(([e]) => {
             if (!e.isIntersecting) stickyNav.classList.add('sticky-active');
             else stickyNav.classList.remove('sticky-active');
         }, { threshold: [0], rootMargin: "-1px 0px 0px 0px" });
@@ -2053,7 +2175,7 @@
             sentinel.style.height = '1px';
             sentinel.style.width = '100%';
             if (stickyNav && stickyNav.parentNode) stickyNav.parentNode.insertBefore(sentinel, stickyNav);
-            observer.observe(sentinel);
+            observerSticky.observe(sentinel);
         }, 100);
 
         // ========================================================================
@@ -2126,5 +2248,6 @@
             };
         });
     </script>
+
 </body>
 </html>
