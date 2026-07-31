@@ -64,6 +64,22 @@
             --back-top-bg: #8b2a1a;
             --back-top-hover: #b03a2a;
             --back-top-color: #fff;
+            /* modal */
+            --modal-overlay: rgba(0, 0, 0, 0.55);
+            --modal-bg: #fefaf5;
+            --modal-text: #2c1a1a;
+            --modal-heading: #8b1a1a;
+            --modal-btn-bg: #8b2a1a;
+            --modal-btn-hover: #b03a2a;
+            --modal-btn-text: #fff;
+            --modal-btn-border: rgba(200, 160, 150, 0.3);
+            --modal-close-color: #5a3020;
+            --modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            /* owner button */
+            --owner-btn-bg: #8b2a1a;
+            --owner-btn-hover: #b03a2a;
+            --owner-btn-text: #fff;
+            --owner-btn-border: rgba(255, 255, 240, 0.3);
         }
         body.dark-mode {
             --bg-body: #1a0e0e;
@@ -116,6 +132,21 @@
             --back-top-bg: #8b2a1a;
             --back-top-hover: #b03a2a;
             --back-top-color: #eee;
+            /* modal dark */
+            --modal-overlay: rgba(0, 0, 0, 0.7);
+            --modal-bg: #1a0e0e;
+            --modal-text: #e8d8d0;
+            --modal-heading: #d08070;
+            --modal-btn-bg: #8b2a1a;
+            --modal-btn-hover: #b03a2a;
+            --modal-btn-text: #fff;
+            --modal-btn-border: rgba(100, 70, 60, 0.4);
+            --modal-close-color: #d0c0b0;
+            --modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            /* owner button dark */
+            --owner-btn-bg: #8b2a1a;
+            --owner-btn-hover: #b03a2a;
+            --owner-btn-text: #fff;
         }
         body {
             background: var(--bg-body);
@@ -198,20 +229,6 @@
             transition: background 0.3s;
             max-width: 90vw;
         }
-        .owner-image {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            background: var(--logo-bg);
-            border-radius: 30%;
-            box-shadow: var(--shadow-header);
-            border: 2px solid rgba(255, 255, 240, 0.6);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .owner-image:hover {
-            transform: scale(1.05);
-            border-color: var(--border-card-hover);
-        }
         .cafe-name {
             font-size: 1.6rem;
             font-weight: 700;
@@ -284,29 +301,18 @@
             transition: 0.2s;
             backdrop-filter: blur(2px);
         }
-        .social-icon.owner-instagram-btn {
-            min-width: 140px;
-            height: auto;
-            padding: 0.55rem 1rem;
-            border-radius: 24px;
-            font-size: 0.95rem;
-            gap: 0.4rem;
-        }
-        .social-icon.owner-instagram-btn i {
-            font-size: 1rem;
-        }
         .social-icon:hover {
             color: #fff;
             background: var(--social-icon-hover-bg);
             transform: translateY(-2px);
             border-color: #f5d8c8;
         }
-        /* ----- owner above menu ----- */
+        /* ----- owner strip (now contains the button) ----- */
         .owner-strip {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             padding: 0.3rem 1rem 0.2rem;
             flex-wrap: wrap;
         }
@@ -319,6 +325,36 @@
         .owner-strip .highlight {
             color: var(--text-price);
             font-weight: 700;
+        }
+        /* ----- small owner button (rectangle rounded) ----- */
+        .owner-btn-small {
+            display: inline-block;
+            background: var(--owner-btn-bg);
+            color: var(--owner-btn-text);
+            border: none;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+            box-shadow: 0 2px 8px rgba(139, 42, 26, 0.25);
+            border: 1px solid var(--owner-btn-border);
+            line-height: 1.4;
+            text-align: center;
+        }
+        .owner-btn-small:hover {
+            background: var(--owner-btn-hover);
+            transform: scale(1.03);
+            box-shadow: 0 4px 14px rgba(139, 42, 26, 0.35);
+        }
+        .owner-btn-small:active {
+            transform: scale(0.97);
+        }
+        body.rtl .owner-btn-small {
+            font-family: 'Cairo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
         /* ----- sticky navigation (dual) ----- */
         .sticky-nav {
@@ -352,6 +388,7 @@
             background: var(--cat-btn-bg);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             width: fit-content;
+            flex-wrap: wrap;
         }
         .nav-tab {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -364,7 +401,7 @@
             color: var(--cat-btn-text);
             transition: all 0.2s ease;
             border-radius: 999px;
-            min-width: 125px;
+            min-width: 105px;
         }
         .nav-tab.active {
             background: var(--cat-btn-active-bg);
@@ -639,7 +676,8 @@
         body.rtl .dark-toggle,
         body.rtl .nav-tab,
         body.rtl .cat-btn,
-        body.rtl .owner-strip span {
+        body.rtl .owner-strip span,
+        body.rtl .owner-btn-small {
             font-family: 'Cairo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
         body.rtl .scroll-hint-right {
@@ -656,6 +694,24 @@
             .menu-section .menu-items-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 padding: 0 0.3rem;
+            }
+            .nav-tab {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+                min-width: 70px;
+            }
+            .nav-tabs {
+                gap: 0.3rem;
+                padding: 0.35rem;
+                border-radius: 60px;
+            }
+            .logo-img {
+                width: 120px;
+                height: 120px;
+            }
+            .owner-btn-small {
+                font-size: 0.8rem;
+                padding: 0.25rem 1rem;
             }
         }
         @media (max-width:480px) {
@@ -727,9 +783,13 @@
                 height: 120px;
             }
             .nav-tab {
-                font-size: 0.95rem;
-                padding: 0.55rem 1rem;
-                min-width: 180px;
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+                min-width: 60px;
+            }
+            .nav-tabs {
+                gap: 0.2rem;
+                padding: 0.3rem;
             }
             .back-top {
                 width: 44px;
@@ -741,6 +801,14 @@
             body.rtl .back-top {
                 right: auto;
                 left: 16px;
+            }
+            .logo-img {
+                width: 110px;
+                height: 110px;
+            }
+            .owner-btn-small {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.8rem;
             }
         }
         @media (max-width:380px) {
@@ -765,6 +833,19 @@
             .menu-section .menu-items-grid {
                 gap: 0.4rem;
                 padding: 0 0.2rem;
+            }
+            .nav-tab {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+                min-width: 50px;
+            }
+            .logo-img {
+                width: 95px;
+                height: 95px;
+            }
+            .owner-btn-small {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
             }
         }
         /* scroll hint highlight */
@@ -816,6 +897,161 @@
         body.rtl .scroll-arrow-tip {
             font-family: 'Cairo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
+
+        /* ============================================================
+                   MODAL (owner popup)
+                   ============================================================ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            background: var(--modal-overlay);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1.5rem;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-overlay.open .modal-box {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .modal-box {
+            background: var(--modal-bg);
+            border-radius: 32px;
+            max-width: 480px;
+            width: 100%;
+            padding: 2.2rem 2rem 2rem;
+            box-shadow: var(--modal-shadow);
+            border: 1px solid var(--border-card);
+            position: relative;
+            opacity: 0;
+            transform: scale(0.92) translateY(20px);
+            transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            text-align: center;
+        }
+        .modal-close {
+            position: absolute;
+            top: 0.8rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: var(--modal-close-color);
+            cursor: pointer;
+            padding: 0.3rem 0.6rem;
+            border-radius: 40px;
+            transition: background 0.2s, transform 0.2s;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.06);
+            transform: rotate(90deg);
+            opacity: 1;
+        }
+        body.dark-mode .modal-close:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+        body.rtl .modal-close {
+            right: auto;
+            left: 1rem;
+        }
+        .modal-box h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--modal-heading);
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.3px;
+        }
+        .modal-box .modal-sub {
+            font-size: 0.95rem;
+            color: var(--modal-text);
+            opacity: 0.8;
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+        }
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 0.2rem;
+        }
+        .modal-btn {
+            display: block;
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 60px;
+            background: var(--modal-btn-bg);
+            color: var(--modal-btn-text);
+            cursor: pointer;
+            transition: all 0.25s;
+            box-shadow: 0 4px 12px rgba(139, 42, 26, 0.25);
+            letter-spacing: 0.3px;
+            font-family: inherit;
+            border: 1px solid var(--modal-btn-border);
+        }
+        .modal-btn:hover {
+            background: var(--modal-btn-hover);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 24px rgba(139, 42, 26, 0.35);
+        }
+        .modal-btn:active {
+            transform: scale(0.97);
+        }
+        .modal-btn i {
+            margin-right: 0.5rem;
+        }
+        body.rtl .modal-btn i {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        /* modal responsive */
+        @media (max-width:480px) {
+            .modal-box {
+                padding: 1.8rem 1.2rem 1.6rem;
+                border-radius: 24px;
+            }
+            .modal-box h2 {
+                font-size: 1.3rem;
+            }
+            .modal-btn {
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+            }
+            .modal-close {
+                font-size: 1.6rem;
+                top: 0.4rem;
+                right: 0.6rem;
+            }
+            body.rtl .modal-close {
+                right: auto;
+                left: 0.6rem;
+            }
+        }
+        @media (max-width:380px) {
+            .modal-box {
+                padding: 1.4rem 0.8rem 1.2rem;
+            }
+            .modal-box h2 {
+                font-size: 1.1rem;
+            }
+            .modal-btn {
+                font-size: 0.9rem;
+                padding: 0.65rem 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -830,6 +1066,7 @@
                 </div>
                 <div class="logo-block">
                     <div class="logo-owner-row">
+                        <!-- فقط الشعار، تم إزالة صورة المالك -->
                         <img src="https://drive.google.com/thumbnail?id=1rTSYhjleDXsCg_pBK9UtUJm1BI2srEOe&sz=s800" alt="soft roof cafe" class="logo-img" id="mainLogo" />
                     </div>
                     <div class="handmade-line"></div>
@@ -839,7 +1076,6 @@
                 <div class="social-links">
                     <a href="https://www.tiktok.com/@soft..roof?_r=1&_t=ZS-98JBVTe0z00" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
                     <a href="https://www.instagram.com/softroof_/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.instagram.com/atitofashion/" class="social-icon owner-instagram-btn" target="_blank">Owner page</a>
                     <a href="https://wa.me/201119555996?text=Hello%2C%20I%20would%20like%20to%20know%20more." class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61592133556986" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://maps.app.goo.gl/ehAvxiECQ1Xmc8uv9" class="social-icon" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
@@ -847,6 +1083,7 @@
                 </div>
                 <div class="owner-strip">
                     <span><span class="highlight" id="ownerHighlight">Owner by Atito</span></span>
+                    <button class="owner-btn-small" id="ownerBtn"><span id="ownerBtnText">Owner Page</span></button>
                 </div>
             </div>
         </div>
@@ -858,6 +1095,7 @@
             <div class="nav-tabs" id="navTabs">
                 <button class="nav-tab active" data-tab="drinks" id="tabDrinks">Drinks</button>
                 <button class="nav-tab" data-tab="food" id="tabFood">Food</button>
+                <button class="nav-tab" data-tab="birthday" id="tabBirthday">Birthday</button>
             </div>
         </div>
         <div class="scroll-menu-wrapper" id="scrollMenuWrapper">
@@ -879,6 +1117,23 @@
     <!-- ===== BACK TO TOP ===== -->
     <button class="back-top" id="backTopBtn" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
+    <!-- ===== MODAL (owner popup) ===== -->
+    <div class="modal-overlay" id="ownerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            <h2 id="modalTitle">Choose Instagram Account</h2>
+            <p class="modal-sub" id="modalSub">Select which profile you want to visit.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn" data-url="https://www.instagram.com/atitofashion/" id="modalBtnAtitoFashion">
+                    <i class="fab fa-instagram"></i> atitofashion
+                </button>
+                <button class="modal-btn" data-url="https://www.instagram.com/atito.oo/" id="modalBtnAtitoOo">
+                    <i class="fab fa-instagram"></i> atito.oo
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ========================================================================
         //  TRANSLATIONS  (central, comprehensive)
@@ -892,36 +1147,63 @@
                 ownerBy: 'Owner by Atito',
                 drinks: 'Drinks',
                 food: 'Food',
+                birthday: 'Birthday',
                 darkOn: 'Light',
                 darkOff: 'Dark',
                 ownerAlt: 'Owner',
                 logoAlt: 'soft roof cafe',
-                // dynamic
                 moreItems: 'more items',
                 backToTop: 'Back to top',
                 langToggle: 'English / العربية',
-                // scroll hint tip (used in RTL detection fallback)
                 scrollTip: 'more items',
-                // category and item fallbacks (used when data lacks translation)
-                // — these are overridden by the data itself; kept as fallback
+                // birthday
+                birthdayTitle: 'Birthday Packages',
+                package1: 'Birthday Package 1',
+                package1Desc: 'Suitable for up to 5 people',
+                package2: 'Birthday Package 2',
+                package2Desc: 'Suitable for 5 to 10 people',
+                package3: 'Birthday Package 3',
+                package3Desc: 'Suitable for more than 10 people',
+                // modal
+                modalTitle: 'Choose Instagram Account',
+                modalSub: 'Select which profile you want to visit.',
+                modalBtn1: 'atitofashion',
+                modalBtn2: 'atito.oo',
+                // owner button
+                ownerButton: 'Owner Page'
             },
             ar: {
                 // static
                 title: 'قائمة سوفت رووف كافيه',
                 cafeName: 'سوفت رووف كافيه',
                 tagline: 'مشروبات مميزة · جو دافئ',
-                ownerBy: 'المالك أتيتو',
+                ownerBy: 'المالك عطتو',
                 drinks: 'مشروبات',
                 food: 'طعام',
+                birthday: 'عيد ميلاد',
                 darkOn: 'فاتح',
                 darkOff: 'داكن',
                 ownerAlt: 'المالك',
                 logoAlt: 'سوفت رووف كافيه',
-                // dynamic
                 moreItems: 'المزيد',
                 backToTop: 'عد للأعلى',
                 langToggle: 'العربية / English',
                 scrollTip: 'المزيد',
+                // birthday
+                birthdayTitle: 'باقات عيد الميلاد',
+                package1: 'باقة عيد ميلاد 1',
+                package1Desc: 'مناسبة حتى 5 أشخاص',
+                package2: 'باقة عيد ميلاد 2',
+                package2Desc: 'مناسبة من 5 إلى 10 أشخاص',
+                package3: 'باقة عيد ميلاد 3',
+                package3Desc: 'مناسبة لأكثر من 10 أشخاص',
+                // modal
+                modalTitle: 'اختر حساب إنستغرام',
+                modalSub: 'اختر الملف الشخصي الذي تريد زيارته.',
+                modalBtn1: 'atitofashion',
+                modalBtn2: 'atito.oo',
+                // owner button
+                ownerButton: 'صفحة المالك'
             }
         };
 
@@ -936,47 +1218,47 @@
                 category: "drink",
                 items: [
                     { name: "Turkish Coffee", desc: "قهوة تركية", price: "55",
-                    image: "https://drive.google.com/thumbnail?id=1m2zVtFe25xe8xZX7xS0ar9yOCQZEZ3gk&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1m2zVtFe25xe8xZX7xS0ar9yOCQZEZ3gk&sz=s800" },
                     { name: "Turkish Coffee (D)", desc: "قهوة تركية (ديبل)", price: "65",
-                    image: "https://drive.google.com/thumbnail?id=1h4q2cDujE7irTFshahgX3bZuCVHdq6KN&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1h4q2cDujE7irTFshahgX3bZuCVHdq6KN&sz=s800" },
                     { name: "French Coffee", desc: "قهوة فرنسية", price: "70",
-                    image: "https://drive.google.com/thumbnail?id=1--PK0W76BPb5k8nLswSH9E40UxjQzmD2&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1--PK0W76BPb5k8nLswSH9E40UxjQzmD2&sz=s800" },
                     { name: "Hazelnut Coffee", desc: "قهوة بندق", price: "75",
-                    image: "https://drive.google.com/thumbnail?id=15Y3W_iTYaUF6dS73K22dbUQMFu7rYg95&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=15Y3W_iTYaUF6dS73K22dbUQMFu7rYg95&sz=s800" },
                     { name: "Nutella Coffee", desc: "قهوة نوتيلا", price: "65",
-                    image: "https://drive.google.com/thumbnail?id=1VuCZukXQ_VXUjMGxCqGKpY9cWymHFDp7&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1VuCZukXQ_VXUjMGxCqGKpY9cWymHFDp7&sz=s800" },
                     { name: "Espresso Single", desc: "إسبرسو فردي", price: "60",
-                    image: "https://drive.google.com/thumbnail?id=1mZE-0b5fVeCBy6Z5zIT03k4LvPHpkGsK&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1mZE-0b5fVeCBy6Z5zIT03k4LvPHpkGsK&sz=s800" },
                     { name: "Double Espresso", desc: "إسبرسو مزدوج", price: "70",
-                    image: "https://drive.google.com/thumbnail?id=1dGybjnN4_p6Ng70DV7c_kGGcJPZzBXLt&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1dGybjnN4_p6Ng70DV7c_kGGcJPZzBXLt&sz=s800" },
                     { name: "American Coffee", desc: "قهوة أمريكية", price: "75",
-                    image: "https://drive.google.com/thumbnail?id=1GucKGiU0mxJe8ZIuJGN_QZv5qWmSyuCN&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1GucKGiU0mxJe8ZIuJGN_QZv5qWmSyuCN&sz=s800" },
                     { name: "Cappuccino", desc: "كابتشينو", price: "100",
-                    image: "https://drive.google.com/thumbnail?id=1UMIaxv8sgx8O2kqFYqN0rSh_ocAHMKoi&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1UMIaxv8sgx8O2kqFYqN0rSh_ocAHMKoi&sz=s800" },
                     { name: "Latte", desc: "لاتيه", price: "100",
-                    image: "https://drive.google.com/thumbnail?id=1f2pACCBo3yO63Tr9QIgjuiliaaOgZafL&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1f2pACCBo3yO63Tr9QIgjuiliaaOgZafL&sz=s800" },
                     { name: "Mikato Single", desc: "ميكاتو فردي", price: "75",
-                    image: "https://drive.google.com/thumbnail?id=1gpVSnVBPdQFaxtkSqiED_YklFA5aoDZn&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1gpVSnVBPdQFaxtkSqiED_YklFA5aoDZn&sz=s800" },
                     { name: "Mikato Double", desc: "ميكاتو مزدوج", price: "85",
-                    image: "https://drive.google.com/thumbnail?id=1GNCOhqT6qMdHBu_Dhie0da3G2U48VUUA&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1GNCOhqT6qMdHBu_Dhie0da3G2U48VUUA&sz=s800" },
                     { name: "cortado", desc: "كورتادو", price: "85",
-                    image: "https://drive.google.com/thumbnail?id=1VODY_rwhgygeQ9ldFGe6sWF33Zyx8ExC&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1VODY_rwhgygeQ9ldFGe6sWF33Zyx8ExC&sz=s800" },
                     { name: "Caramel Mikato", desc: "ميكاتو كراميل", price: "110",
-                    image: "https://drive.google.com/thumbnail?id=1hJLmTb79OPLy2VHC43bUjmNU5yyZul1j&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1hJLmTb79OPLy2VHC43bUjmNU5yyZul1j&sz=s800" },
                     { name: "Mocha", desc: "موكا", price: "110",
-                    image: "https://drive.google.com/thumbnail?id=1NcWCNjzfCSIl5U0qSyrceSDxxgtAaOQO&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1NcWCNjzfCSIl5U0qSyrceSDxxgtAaOQO&sz=s800" },
                     { name: "Nescafe", desc: "نسكافيه", price: "55",
-                    image: "https://drive.google.com/thumbnail?id=17WmGIA_TCKY5pi2Uek_E9Tl0B3sctOjR&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=17WmGIA_TCKY5pi2Uek_E9Tl0B3sctOjR&sz=s800" },
                     { name: "Nescafe with Milk", desc: "نسكافيه بالحليب", price: "95",
-                    image: "https://drive.google.com/thumbnail?id=1JEYjdFVdQvujWZgnY-AAxpey3Je9rrCh&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1JEYjdFVdQvujWZgnY-AAxpey3Je9rrCh&sz=s800" },
                     { name: "Hot Chocolate", desc: "شوكولاتة ساخنة", price: "100",
-                    image: "https://drive.google.com/thumbnail?id=1jVGaJ6ZGMV2NmUJm6WNY-8_1BPPn3LgZ&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1jVGaJ6ZGMV2NmUJm6WNY-8_1BPPn3LgZ&sz=s800" },
                     { name: "Hot Chocolate Marshmallow", desc: "شوكولاتة ساخنة مع مارشميلو", price: "120",
-                    image: "https://drive.google.com/thumbnail?id=1W7CL2KiIB1G6u90TQO5QeRqQdaMbVdGp&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1W7CL2KiIB1G6u90TQO5QeRqQdaMbVdGp&sz=s800" },
                     { name: "Flat White", desc: "فلات وايت", price: "100",
-                    image: "https://drive.google.com/thumbnail?id=1k-gyh2W0EwobWMT7FxqcqxM6IDiD3jh0&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1k-gyh2W0EwobWMT7FxqcqxM6IDiD3jh0&sz=s800" },
                     { name: "Spanish Latte", desc: "لاتيه إسباني", price: "110",
-                    image: "https://drive.google.com/thumbnail?id=1A_k2TgzUWY0jdXg_6zAxDYurDJbBn0sY&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1A_k2TgzUWY0jdXg_6zAxDYurDJbBn0sY&sz=s800" },
                 ]
             }, {
                 id: "hot-drinks",
@@ -985,32 +1267,32 @@
                 category: "drink",
                 items: [
                     { name: "Hot Tea", desc: "شاي ساخن", price: "40",
-                    image: "https://drive.google.com/thumbnail?id=106wQRqIkUlk2stcCJaAmTXKfLnIDcEor&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=106wQRqIkUlk2stcCJaAmTXKfLnIDcEor&sz=s800" },
                     { name: "Green Tea", desc: "شاي أخضر", price: "50",
-                    image: "https://drive.google.com/thumbnail?id=1yuBjibrGIhMKBqlLOVmD0jEKRbaWkgs8&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1yuBjibrGIhMKBqlLOVmD0jEKRbaWkgs8&sz=s800" },
                     { name: "Tea with Milk", desc: "شاي بالحليب", price: "70",
-                    image: "https://topkapi2025.github.io/images/3.jfif" },
+                        image: "https://topkapi2025.github.io/images/3.jfif" },
                     { name: "Tea with Flavors", desc: "شاي بالنكهات", price: "55",
-                    image: "https://topkapi2025.github.io/images/4.jfif" },
+                        image: "https://topkapi2025.github.io/images/4.jfif" },
                     { name: "Pot Tea", desc: "شاي الإبريق", price: "80",
-                    image: "https://topkapi2025.github.io/images/5.jfif" },
+                        image: "https://topkapi2025.github.io/images/5.jfif" },
                     { name: "Anise", desc: "يانسون", price: "40", image: "https://topkapi2025.github.io/images/6.jfif" },
                     { name: "Mint", desc: "نعناع", price: "40", image: "https://topkapi2025.github.io/images/7.jfif" },
                     { name: "Ginger", desc: "زنجبيل", price: "60", image: "https://topkapi2025.github.io/images/8.jfif" },
                     { name: "Hibiscus", desc: "كركديه", price: "40", image: "https://topkapi2025.github.io/images/9.jfif" },
                     { name: "Cinnamon", desc: "قرفة", price: "60", image: "https://topkapi2025.github.io/images/10.jfif" },
                     { name: "Cinnamon with Milk", desc: "قرفة بالحليب", price: "75",
-                    image: "https://topkapi2025.github.io/images/11.jfif" },
+                        image: "https://topkapi2025.github.io/images/11.jfif" },
                     { name: "Hot Cider", desc: "سيدر ساخن", price: "75",
-                    image: "https://topkapi2025.github.io/images/12.jfif" },
+                        image: "https://topkapi2025.github.io/images/12.jfif" },
                     { name: "Herbs Cocktail", desc: "كوكتيل أعشاب", price: "70",
-                    image: "https://topkapi2025.github.io/images/13.jfif" },
+                        image: "https://topkapi2025.github.io/images/13.jfif" },
                     { name: "Sahlab Nuts", desc: "سحلب بالمكسرات", price: "90",
-                    image: "https://topkapi2025.github.io/images/14.jfif" },
+                        image: "https://topkapi2025.github.io/images/14.jfif" },
                     { name: "Sahlab Fruits", desc: "سحلب بالفواكه", price: "130",
-                    image: "https://topkapi2025.github.io/images/15.jfif" },
+                        image: "https://topkapi2025.github.io/images/15.jfif" },
                     { name: "Sahlab Oreo", desc: "سحلب أوريو", price: "120",
-                    image: "https://topkapi2025.github.io/images/16.jfif" },
+                        image: "https://topkapi2025.github.io/images/16.jfif" },
                 ]
             }, {
                 id: "fresh-drinks",
@@ -1019,33 +1301,33 @@
                 category: "drink",
                 items: [
                     { name: "Mango", desc: "مانجو", price: "100",
-                    image: "https://topkapi2025.github.io/images/73.jfif" },
+                        image: "https://topkapi2025.github.io/images/73.jfif" },
                     { name: "Mango Peach", desc: "مانجو وخوخ", price: "120",
-                    image: "https://topkapi2025.github.io/images/74.jfif" },
+                        image: "https://topkapi2025.github.io/images/74.jfif" },
                     { name: "Mango Kiwi", desc: "مانجو وكيوي", price: "120",
-                    image: "https://topkapi2025.github.io/images/75.jfif" },
+                        image: "https://topkapi2025.github.io/images/75.jfif" },
                     { name: "Strawberry", desc: "فراولة", price: "100",
-                    image: "https://topkapi2025.github.io/images/76.jfif" },
+                        image: "https://topkapi2025.github.io/images/76.jfif" },
                     { name: "Guava", desc: "جوافة", price: "100",
-                    image: "https://topkapi2025.github.io/images/77.jfif" },
+                        image: "https://topkapi2025.github.io/images/77.jfif" },
                     { name: "Orange", desc: "برتقال", price: "95",
-                    image: "https://topkapi2025.github.io/images/78.jfif" },
+                        image: "https://topkapi2025.github.io/images/78.jfif" },
                     { name: "Lemon", desc: "ليمون", price: "85",
-                    image: "https://topkapi2025.github.io/images/79.jfif" },
+                        image: "https://topkapi2025.github.io/images/79.jfif" },
                     { name: "Lemon with Mint", desc: "ليمون بالنعناع", price: "90",
-                    image: "https://topkapi2025.github.io/images/80.jfif" },
+                        image: "https://topkapi2025.github.io/images/80.jfif" },
                     { name: "Watermelon", desc: "بطيخ", price: "110",
-                    image: "https://topkapi2025.github.io/images/81.jfif" },
+                        image: "https://topkapi2025.github.io/images/81.jfif" },
                     { name: "Banana with Milk", desc: "موز بالحليب", price: "120",
-                    image: "https://topkapi2025.github.io/images/82.jfif" },
+                        image: "https://topkapi2025.github.io/images/82.jfif" },
                     { name: "Guava with Milk", desc: "جوافة بالحليب", price: "120",
-                    image: "https://topkapi2025.github.io/images/83.jfif" },
+                        image: "https://topkapi2025.github.io/images/83.jfif" },
                     { name: "Green Point", desc: "غرين بوينت", price: "110",
-                    image: "https://topkapi2025.github.io/images/84.jfif" },
+                        image: "https://topkapi2025.github.io/images/84.jfif" },
                     { name: "Kiwi", desc: "كيوي", price: "130",
-                    image: "https://topkapi2025.github.io/images/86.jfif" },
+                        image: "https://topkapi2025.github.io/images/86.jfif" },
                     { name: "Avocado", desc: "أفوكادو", price: "150",
-                    image: "https://topkapi2025.github.io/images/87.jfif" }
+                        image: "https://topkapi2025.github.io/images/87.jfif" }
                 ]
             }, {
                 id: "soft-drinks",
@@ -1054,31 +1336,31 @@
                 category: "drink",
                 items: [
                     { name: "Water", desc: "ماء", price: "15",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS99ZRqyI6VUhQrISJDCxSB9t0qdStoaZ93iMpzGN5Cbg&s=10" },
+                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS99ZRqyI6VUhQrISJDCxSB9t0qdStoaZ93iMpzGN5Cbg&s=10" },
                     { name: "7UP", desc: "سفن أب", price: "55",
-                    image: "https://topkapi2025.github.io/images/99.jfif" },
+                        image: "https://topkapi2025.github.io/images/99.jfif" },
                     { name: "Coca Cola", desc: "كوكا كولا", price: "55",
-                    image: "https://topkapi2025.github.io/images/100.jfif" },
+                        image: "https://topkapi2025.github.io/images/100.jfif" },
                     { name: "Pepsi", desc: "بيبسي", price: "55",
-                    image: "https://topkapi2025.github.io/images/101.jfif" },
+                        image: "https://topkapi2025.github.io/images/101.jfif" },
                     { name: "Pepsi Diet", desc: "بيبسي دايت", price: "55",
-                    image: "https://topkapi2025.github.io/images/102.jfif" },
+                        image: "https://topkapi2025.github.io/images/102.jfif" },
                     { name: "V Seven", desc: "في سفن", price: "55",
-                    image: "https://topkapi2025.github.io/images/103.jfif" },
+                        image: "https://topkapi2025.github.io/images/103.jfif" },
                     { name: "V Cola", desc: "في كولا", price: "55",
-                    image: "https://topkapi2025.github.io/images/104.jfif" },
+                        image: "https://topkapi2025.github.io/images/104.jfif" },
                     { name: "Twist", desc: "تويست", price: "55",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD60T2goTbj34UgfMwsJT8DfYJSb97OLBymRUHELPuQQ&s=10" },
+                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD60T2goTbj34UgfMwsJT8DfYJSb97OLBymRUHELPuQQ&s=10" },
                     { name: "Fury", desc: "فيوري", price: "60",
-                    image: "https://topkapi2025.github.io/images/106.jfif" },
+                        image: "https://topkapi2025.github.io/images/106.jfif" },
                     { name: "Schweppes", desc: "شويبس", price: "55",
-                    image: "https://topkapi2025.github.io/images/108.jfif" },
+                        image: "https://topkapi2025.github.io/images/108.jfif" },
                     { name: "Fayrouz", desc: "فيروز", price: "55",
-                    image: "https://topkapi2025.github.io/images/109.jfif" },
+                        image: "https://topkapi2025.github.io/images/109.jfif" },
                     { name: "Birell", desc: "بيريل", price: "55",
-                    image: "https://topkapi2025.github.io/images/110.jfif" },
+                        image: "https://topkapi2025.github.io/images/110.jfif" },
                     { name: "Redbull", desc: "ريد بول", price: "90",
-                    image: "https://drive.google.com/thumbnail?id=1fl_dbBgfrsJnozRQHKdaDKgFzfHs-CJR&sz=s800" }
+                        image: "https://drive.google.com/thumbnail?id=1fl_dbBgfrsJnozRQHKdaDKgFzfHs-CJR&sz=s800" }
                 ]
             }, {
                 id: "soda-cocktail",
@@ -1087,21 +1369,21 @@
                 category: "drink",
                 items: [
                     { name: "Mojito", desc: "موخيتو", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/17.jfif" },
+                        image: "https://topkapi2025.github.io/images/17.jfif" },
                     { name: "Scotch Menit", desc: "سكوتش مينت", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/18.jpg" },
+                        image: "https://topkapi2025.github.io/images/18.jpg" },
                     { name: "Sunshine", desc: "صَن شاين", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/19.jfif" },
+                        image: "https://topkapi2025.github.io/images/19.jfif" },
                     { name: "Blue Sky", desc: "بلو سكاي", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/20.jfif" },
+                        image: "https://topkapi2025.github.io/images/20.jfif" },
                     { name: "Cherry Cola", desc: "تشيري كولا", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/21.jfif" },
+                        image: "https://topkapi2025.github.io/images/21.jfif" },
                     { name: "electric lemon", desc: "إلكتريك ليمون", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/22.jfif" },
+                        image: "https://topkapi2025.github.io/images/22.jfif" },
                     { name: "Superman", desc: "سوبرمان", price: "130.00",
-                    image: "https://drive.google.com/thumbnail?id=1tSM6ILJ4EB1VVdGpXc-igVCQjAUhjH2S&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1tSM6ILJ4EB1VVdGpXc-igVCQjAUhjH2S&sz=s800" },
                     { name: "Redbull Passion Fruit", desc: "ريد بول باشيون فروت", price: "120.00",
-                    image: "https://topkapi2025.github.io/images/24.jfif" }
+                        image: "https://topkapi2025.github.io/images/24.jfif" }
                 ]
             }, {
                 id: "iced-coffee",
@@ -1110,19 +1392,19 @@
                 category: "drink",
                 items: [
                     { name: "Mocha", desc: "موكا مثلجة", price: "120",
-                    image: "https://topkapi2025.github.io/images/57.jfif" },
+                        image: "https://topkapi2025.github.io/images/57.jfif" },
                     { name: "Latte", desc: "لاتيه مثلج", price: "110",
-                    image: "https://topkapi2025.github.io/images/58.jfif" },
+                        image: "https://topkapi2025.github.io/images/58.jfif" },
                     { name: "Chocolate", desc: "شوكولاتة مثلجة", price: "120",
-                    image: "https://topkapi2025.github.io/images/59.jpg" },
+                        image: "https://topkapi2025.github.io/images/59.jpg" },
                     { name: "Cappuccino", desc: "كابتشينو مثلج", price: "110",
-                    image: "https://topkapi2025.github.io/images/60.jfif" },
+                        image: "https://topkapi2025.github.io/images/60.jfif" },
                     { name: "Tea", desc: "شاي مثلج", price: "90",
-                    image: "https://topkapi2025.github.io/images/61.jfif" },
+                        image: "https://topkapi2025.github.io/images/61.jfif" },
                     { name: "Spanish Coffee", desc: "قهوة إسبانية مثلجة", price: "120",
-                    image: "https://topkapi2025.github.io/images/62.jfif" },
+                        image: "https://topkapi2025.github.io/images/62.jfif" },
                     { name: "Caramel Latte", desc: "لاتيه كراميل مثلج", price: "120",
-                    image: "https://i2.wp.com/bakingmischief.com/wp-content/uploads/2022/03/iced-caramel-latte-image-683x1024.jpg" }
+                        image: "https://i2.wp.com/bakingmischief.com/wp-content/uploads/2022/03/iced-caramel-latte-image-683x1024.jpg" }
                 ]
             }, {
                 id: "frappe",
@@ -1131,11 +1413,11 @@
                 category: "drink",
                 items: [
                     { name: "Chocolate", desc: "فرابيه شوكولاتة", price: "120",
-                    image: "https://topkapi2025.github.io/images/46.jfif" },
+                        image: "https://topkapi2025.github.io/images/46.jfif" },
                     { name: "Caramel", desc: "فرابيه كراميل", price: "120",
-                    image: "https://topkapi2025.github.io/images/47.jpg" },
+                        image: "https://topkapi2025.github.io/images/47.jpg" },
                     { name: "Vanilla", desc: "فرابيه فانيليا", price: "110",
-                    image: "https://drive.google.com/thumbnail?id=1EeR-mlZ3JHIbJSk-fGQ_UJzAX_xuXtNK&sz=s800" }
+                        image: "https://drive.google.com/thumbnail?id=1EeR-mlZ3JHIbJSk-fGQ_UJzAX_xuXtNK&sz=s800" }
                 ]
             }, {
                 id: "matcha",
@@ -1144,13 +1426,13 @@
                 category: "drink",
                 items: [
                     { name: "Iced Matcha Latte", desc: "لاتيه مايتشا مثلج", price: "120",
-                    image: "https://vancouverwithlove.com/wp-content/uploads/2025/03/iced-matcha-latte-8-1097x1536.jpg" },
+                        image: "https://vancouverwithlove.com/wp-content/uploads/2025/03/iced-matcha-latte-8-1097x1536.jpg" },
                     { name: "Matcha Coconut", desc: "مايتشا جوز هند", price: "120",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRovEXcVTgDCKOdQKU4AORYhdVxifxL7l7e4KHImyTy_328lj_O2Sz4k4q9&s=10" },
+                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRovEXcVTgDCKOdQKU4AORYhdVxifxL7l7e4KHImyTy_328lj_O2Sz4k4q9&s=10" },
                     { name: "Iced Matcha", desc: "مايتشا مثلج", price: "100",
-                    image: "https://vancouverwithlove.com/wp-content/uploads/2025/03/iced-matcha-latte-8-1097x1536.jpg" },
+                        image: "https://vancouverwithlove.com/wp-content/uploads/2025/03/iced-matcha-latte-8-1097x1536.jpg" },
                     { name: "Spanish Matcha", desc: "مايتشا إسباني", price: "100",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1DqJ5Y71mk0oaQnEd0g5YInp_nkl655vnxbjMHTcADIfcr2HWWJrehX8&s=10" }
+                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1DqJ5Y71mk0oaQnEd0g5YInp_nkl655vnxbjMHTcADIfcr2HWWJrehX8&s=10" }
                 ]
             }, {
                 id: "milkshake",
@@ -1159,23 +1441,23 @@
                 category: "drink",
                 items: [
                     { name: "Mango", desc: "ميلك شيك مانجو", price: "120",
-                    image: "https://topkapi2025.github.io/images/63.jfif" },
+                        image: "https://topkapi2025.github.io/images/63.jfif" },
                     { name: "Berries", desc: "ميلك شيك توت", price: "120",
-                    image: "https://topkapi2025.github.io/images/64.jfif" },
+                        image: "https://topkapi2025.github.io/images/64.jfif" },
                     { name: "Mix Berries", desc: "ميلك شيك توت مشكل", price: "130",
-                    image: "https://topkapi2025.github.io/images/65.jfif" },
+                        image: "https://topkapi2025.github.io/images/65.jfif" },
                     { name: "Caramel", desc: "ميلك شيك كراميل", price: "120",
-                    image: "https://topkapi2025.github.io/images/66.jfif" },
+                        image: "https://topkapi2025.github.io/images/66.jfif" },
                     { name: "Strawberry", desc: "ميلك شيك فراولة", price: "120",
-                    image: "https://topkapi2025.github.io/images/67.jfif" },
+                        image: "https://topkapi2025.github.io/images/67.jfif" },
                     { name: "Chocolate", desc: "ميلك شيك شوكولاتة", price: "120",
-                    image: "https://topkapi2025.github.io/images/68.jfif" },
+                        image: "https://topkapi2025.github.io/images/68.jfif" },
                     { name: "Oreo", desc: "ميلك شيك أوريو", price: "130",
-                    image: "https://topkapi2025.github.io/images/69.jfif" },
+                        image: "https://topkapi2025.github.io/images/69.jfif" },
                     { name: "Vanilla", desc: "ميلك شيك فانيليا", price: "110",
-                    image: "https://topkapi2025.github.io/images/70.jfif" },
+                        image: "https://topkapi2025.github.io/images/70.jfif" },
                     { name: "Lotus", desc: "ميلك شيك لوتس", price: "120",
-                    image: "https://topkapi2025.github.io/images/71.jfif" }
+                        image: "https://topkapi2025.github.io/images/71.jfif" }
                 ]
             }, {
                 id: "smoothie",
@@ -1184,19 +1466,19 @@
                 category: "drink",
                 items: [
                     { name: "Mango", desc: "سموذي مانجو", price: "110",
-                    image: "https://topkapi2025.github.io/images/49.jpg" },
+                        image: "https://topkapi2025.github.io/images/49.jpg" },
                     { name: "Watermelon", desc: "سموذي بطيخ", price: "110",
-                    image: "https://topkapi2025.github.io/images/50.jfif" },
+                        image: "https://topkapi2025.github.io/images/50.jfif" },
                     { name: "Kiwi", desc: "سموذي كيوي", price: "140",
-                    image: "https://topkapi2025.github.io/images/52.jfif" },
+                        image: "https://topkapi2025.github.io/images/52.jfif" },
                     { name: "Berries", desc: "سموذي توت", price: "110",
-                    image: "https://topkapi2025.github.io/images/53.jpg" },
+                        image: "https://topkapi2025.github.io/images/53.jpg" },
                     { name: "Peach", desc: "سموذي خوخ", price: "110",
-                    image: "https://topkapi2025.github.io/images/54.jpg" },
+                        image: "https://topkapi2025.github.io/images/54.jpg" },
                     { name: "Pineapple", desc: "سموذي أناناس", price: "110",
-                    image: "https://topkapi2025.github.io/images/55.jfif" },
+                        image: "https://topkapi2025.github.io/images/55.jfif" },
                     { name: "Watermelon Mint", desc: "سموذي بطيخ ونعناع", price: "120",
-                    image: "https://topkapi2025.github.io/images/56.jfif" }
+                        image: "https://topkapi2025.github.io/images/56.jfif" }
                 ]
             }, {
                 id: "yogurt-drinks",
@@ -1205,23 +1487,23 @@
                 category: "drink",
                 items: [
                     { name: "Honey", desc: "زبادي بالعسل", price: "90.00",
-                    image: "https://topkapi2025.github.io/images/89.jfif" },
+                        image: "https://topkapi2025.github.io/images/89.jfif" },
                     { name: "Mango", desc: "زبادي بالمانجو", price: "120.00",
-                    image: "https://topkapi2025.github.io/images/90.jfif" },
+                        image: "https://topkapi2025.github.io/images/90.jfif" },
                     { name: "Strawberry", desc: "زبادي بالفراولة", price: "110.00",
-                    image: "https://topkapi2025.github.io/images/91.jpg" },
+                        image: "https://topkapi2025.github.io/images/91.jpg" },
                     { name: "Banana", desc: "زبادي بالموز", price: "110.00",
-                    image: "https://topkapi2025.github.io/images/92.jfif" },
+                        image: "https://topkapi2025.github.io/images/92.jfif" },
                     { name: "Berries", desc: "زبادي بالتوت", price: "100.00",
-                    image: "https://www.girlgonegourmet.com/wp-content/uploads/2024/05/BlueberrySmoothie-14.jpg" },
+                        image: "https://www.girlgonegourmet.com/wp-content/uploads/2024/05/BlueberrySmoothie-14.jpg" },
                     { name: "Vanilla", desc: "زبادي بالفانيليا", price: "100.00",
-                    image: "https://topkapi2025.github.io/images/94.jpg" },
+                        image: "https://topkapi2025.github.io/images/94.jpg" },
                     { name: "Kiwi", desc: "زبادي بالكيوي", price: "130.00",
-                    image: "https://topkapi2025.github.io/images/95.jfif" },
+                        image: "https://topkapi2025.github.io/images/95.jfif" },
                     { name: "Fruit", desc: "زبادي بالفواكه", price: "150.00",
-                    image: "https://topkapi2025.github.io/images/96.jpg" },
+                        image: "https://topkapi2025.github.io/images/96.jpg" },
                     { name: "Passion", desc: "زبادي بباسيون فروت", price: "110.00",
-                    image: "https://topkapi2025.github.io/images/97.jfif" }
+                        image: "https://topkapi2025.github.io/images/97.jfif" }
                 ]
             }, {
                 id: "booba",
@@ -1230,15 +1512,15 @@
                 category: "drink",
                 items: [
                     { name: "Classic Booba", desc: "بووبا كلاسيك", price: "00",
-                    image: "https://drive.google.com/thumbnail?id=1q0tzFjbeHXZ8YyjHTjX1puCrkM-4mb2o&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1q0tzFjbeHXZ8YyjHTjX1puCrkM-4mb2o&sz=s800" },
                     { name: "Strawberry Booba", desc: "بووبا فراولة", price: "00",
-                    image: "https://drive.google.com/thumbnail?id=1mV1fAXIG6Hb387qF7sFBhfaYsW44X6qs&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1mV1fAXIG6Hb387qF7sFBhfaYsW44X6qs&sz=s800" },
                     { name: "Blueberry Booba", desc: "بووبا بلو بيري", price: "00",
-                    image: "https://drive.google.com/thumbnail?id=1iiEgwv0ohXiVEJk-XP3QOa_5Ov0g4fZo&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1iiEgwv0ohXiVEJk-XP3QOa_5Ov0g4fZo&sz=s800" },
                     { name: "Mango Booba", desc: "بووبا مانجو", price: "00",
-                    image: "https://drive.google.com/thumbnail?id=1u7gsPI_89_emSJ-JHVMIC0nMv_1H0ZTO&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1u7gsPI_89_emSJ-JHVMIC0nMv_1H0ZTO&sz=s800" },
                     { name: "Lychee Booba", desc: "بووبا لايتشي", price: "00",
-                    image: "https://drive.google.com/thumbnail?id=1oJ4uzWx-q34xIHo2_7u_09-AbR5_Pzg8&sz=s800" }
+                        image: "https://drive.google.com/thumbnail?id=1oJ4uzWx-q34xIHo2_7u_09-AbR5_Pzg8&sz=s800" }
                 ]
             }, {
                 id: "ice-cream",
@@ -1248,16 +1530,16 @@
                 items: [
                     { name: " Ice Cream one scoop Chocolate / vanillia ",
                         desc: "بولة واحدة من الآيس كريم بنكهة الشوكولاتة أو الفانيليا", price: "30",
-                    image: "https://drive.google.com/thumbnail?id=1IUxv6dxsmC4rCKaYP1iYArn03nVuEgwy&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1IUxv6dxsmC4rCKaYP1iYArn03nVuEgwy&sz=s800" },
                     { name: "Ice Cream two scoop Any Flavor ",
                         desc: "بولتين من الآيس كريم بنكهة الشوكولاتة أو الفانيليا", price: "55",
-                    image: "https://drive.google.com/thumbnail?id=1O-c6LaRYNb-NFsU0NKCvu1jF9hpwF_pe&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1O-c6LaRYNb-NFsU0NKCvu1jF9hpwF_pe&sz=s800" },
                     { name: "Mango Ice Cream", desc: "آيس كريم مانجو", price: "30",
-                    image: "https://drive.google.com/thumbnail?id=1euWJAmLfiwfWLjwQ4b_kdR29U9RuLoPT&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1euWJAmLfiwfWLjwQ4b_kdR29U9RuLoPT&sz=s800" },
                     { name: "Vanilla Ice Cream", desc: "آيس كريم فانيليا", price: "30",
-                    image: "https://drive.google.com/thumbnail?id=17bLUsQFeL1MHJdqF4aYBTqvbRXIoCUce&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=17bLUsQFeL1MHJdqF4aYBTqvbRXIoCUce&sz=s800" },
                     { name: "Strawberry Ice Cream", desc: "آيس كريم فراولة", price: "30",
-                    image: "https://drive.google.com/thumbnail?id=105LBaRgn562CO0-1_shyHz6wE978GhqB&sz=s800" }
+                        image: "https://drive.google.com/thumbnail?id=105LBaRgn562CO0-1_shyHz6wE978GhqB&sz=s800" }
                 ]
             }, {
                 id: "dessert",
@@ -1266,27 +1548,27 @@
                 category: "food",
                 items: [
                     { name: "Molten cake", desc: "مولتن كيك", price: "100",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/Molten-Cake-3.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/Molten-Cake-3.jpeg" },
                     { name: "Molten cake birthday", desc: "مولتن كيك عيد ميلاد", price: "150",
-                    image: "https://drive.google.com/thumbnail?id=1rkoRCVyo0tAj3s5nYXVb7uG_8bfeaLYY&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1rkoRCVyo0tAj3s5nYXVb7uG_8bfeaLYY&sz=s800" },
                     { name: "Chocolate Cake", desc: "كيكة الشوكولاتة", price: "125",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/Chocolate-Cake-3-300x300.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/Chocolate-Cake-3-300x300.jpeg" },
                     { name: "Chocolate Birthday Cake", desc: "كيكة شوكولاتة عيد ميلاد", price: "150",
-                    image: "https://drive.google.com/thumbnail?id=1Lncfk_ILQePXTMfoAuGzIuxLkJ8kS0OI&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1Lncfk_ILQePXTMfoAuGzIuxLkJ8kS0OI&sz=s800" },
                     { name: "Classic Cheesecake", desc: "تشيز كيك كلاسيكي", price: "120",
-                    image: "https://drive.google.com/thumbnail?id=1dAwz5qAxoExk9kKy7pQQV6A_-GsdJIOx&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1dAwz5qAxoExk9kKy7pQQV6A_-GsdJIOx&sz=s800" },
                     { name: "Classic Cheesecake birthday", desc: "تشيز كيك كلاسيكي عيد ميلاد", price: "150",
-                    image: "https://drive.google.com/thumbnail?id=1I_yjp3z6Jcd7ApMfkfJbDzoBy1tXrvax&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1I_yjp3z6Jcd7ApMfkfJbDzoBy1tXrvax&sz=s800" },
                     { name: "Brownies", desc: "براونيز", price: "85",
-                    image: "https://drive.google.com/thumbnail?id=1StgK2hE30-3wS_rgk_DBNZCBKUduCxCb&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1StgK2hE30-3wS_rgk_DBNZCBKUduCxCb&sz=s800" },
                     { name: "Red Velvet Cake", desc: "كيكة المخمل الأحمر", price: "125",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/Red-Velvet-Cake-3-300x300.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/Red-Velvet-Cake-3-300x300.jpeg" },
                     { name: "Blueberry cheesecake", desc: "تشيز كيك بالتوت الأزرق", price: "130",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/WhatsApp-Image-2025-12-28-at-6.08.42-PM-3-300x300.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/WhatsApp-Image-2025-12-28-at-6.08.42-PM-3-300x300.jpeg" },
                     { name: "Tiramisu Cake", desc: "كيكة تيراميسو", price: "130",
-                    image: "https://drive.google.com/thumbnail?id=1ZMvyZ6tlK4HFz-H7Zb0_AjdgOCTHhTm4&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1ZMvyZ6tlK4HFz-H7Zb0_AjdgOCTHhTm4&sz=s800" },
                     { name: "English cake", desc: "كيكة إنجليزية", price: "80",
-                    image: "https://drive.google.com/thumbnail?id=1oh5o_2zFtDcYJRpng1Jt5IT3YvXjrMAB&sz=s800" }
+                        image: "https://drive.google.com/thumbnail?id=1oh5o_2zFtDcYJRpng1Jt5IT3YvXjrMAB&sz=s800" }
                 ]
             }, {
                 id: "bakery",
@@ -1295,11 +1577,11 @@
                 category: "food",
                 items: [
                     { name: "Chocolate Cookies", desc: "كعكات الشوكولاتة", price: "80",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/WhatsApp-Image-2025-07-19-at-9.58.30-AM-3-300x300.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/WhatsApp-Image-2025-07-19-at-9.58.30-AM-3-300x300.jpeg" },
                     { name: "Blueberry Muffin", desc: "كعكة التوت الأزرق", price: "80",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/unnamed-file-3-300x300.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/unnamed-file-3-300x300.jpeg" },
                     { name: "Chocolate Muffin", desc: "كعكة المافين", price: "80",
-                    image: "https://strella-egy.com/wp-content/uploads/2026/03/%D9%85%D8%A7%D9%81%D9%86-3-300x300.jpeg" },
+                        image: "https://strella-egy.com/wp-content/uploads/2026/03/%D9%85%D8%A7%D9%81%D9%86-3-300x300.jpeg" },
                 ]
             }, {
                 id: "croissants",
@@ -1309,17 +1591,40 @@
                 items: [
                     { name: "Butter croissant with grilled chicken, lettuce, parmesan & Caesar dressing.",
                         desc: "كرواسون بالزبدة مع دجاج مشوي، خس، بارميزان وصوص سيزر.", price: "155",
-                    image: "https://drive.google.com/thumbnail?id=1tHX7l03yckksxsZ1KaOdRC8osneEJFsM&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1tHX7l03yckksxsZ1KaOdRC8osneEJFsM&sz=s800" },
                     { name: "Butter croissant with smoked turkey, cheddar cheese & fresh lettuce.",
                         desc: "كرواسون بالزبدة مع تركي مدخن، جبنة شيدر وخس طازج.", price: "145",
-                    image: "https://drive.google.com/thumbnail?id=1AH03TmMOHE4-drt6Ft0ihRLO5CGfPgOS&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1AH03TmMOHE4-drt6Ft0ihRLO5CGfPgOS&sz=s800" },
                     { name: "Butter croissant with roast beef, cheddar cheese, lettuce & honey mustard.",
                         desc: "كرواسون بالزبدة مع روست بيف، شيدر، خس وصوص هاني ماسترد.", price: "150",
-                    image: "https://drive.google.com/thumbnail?id=1AgXZ1vztfUR6SGnQAtBCJkmOLgaNczRT&sz=s800" },
+                        image: "https://drive.google.com/thumbnail?id=1AgXZ1vztfUR6SGnQAtBCJkmOLgaNczRT&sz=s800" },
                     { name: "Butter croissant with tuna mix, lettuce & pickles.",
                         desc: "كرواسون بالزبدة مع تونة، خس ومخلل.", price: "150",
-                    image: "https://drive.google.com/thumbnail?id=1i3OMTdS1exkLFEBWkHnRt8rDQjXAswA-&sz=s800" }
+                        image: "https://drive.google.com/thumbnail?id=1i3OMTdS1exkLFEBWkHnRt8rDQjXAswA-&sz=s800" }
                 ]
+            },
+            // ===== BIRTHDAY PACKAGES (new category) =====
+            {
+                id: "birthday",
+                label: "Birthday Packages",
+                title: "باقات عيد الميلاد",
+                category: "birthday",
+                items: [{
+                    name: "Birthday Package 1",
+                    desc: "مناسب حتى 5 أشخاص",
+                    price: "250",
+                    image: "https://picsum.photos/seed/birthday1/400/400"
+                }, {
+                    name: "Birthday Package 2",
+                    desc: "مناسب من 5 إلى 10 أشخاص",
+                    price: "500",
+                    image: "https://picsum.photos/seed/birthday2/400/400"
+                }, {
+                    name: "Birthday Package 3",
+                    desc: "مناسب لأكثر من 10 أشخاص",
+                    price: "1000",
+                    image: "https://picsum.photos/seed/birthday3/400/400"
+                }]
             }]
         };
 
@@ -1388,52 +1693,56 @@
         function applyStaticTranslations() {
             const t = currentLanguage === 'ar' ? TRANSLATIONS.ar : TRANSLATIONS.en;
 
-            // title
             document.title = t.title;
             const titleEl = document.getElementById('pageTitle');
             if (titleEl) titleEl.textContent = t.title;
 
-            // cafe name
             const nameEl = document.getElementById('cafeNameEl');
             if (nameEl) nameEl.textContent = t.cafeName;
 
-            // tagline
             const tagEl = document.getElementById('taglineEl');
             if (tagEl) tagEl.textContent = t.tagline;
 
-            // owner highlight
             const ownerEl = document.getElementById('ownerHighlight');
             if (ownerEl) ownerEl.textContent = t.ownerBy;
 
-            // tabs
             const tabDrinks = document.getElementById('tabDrinks');
             const tabFood = document.getElementById('tabFood');
+            const tabBirthday = document.getElementById('tabBirthday');
             if (tabDrinks) tabDrinks.textContent = t.drinks;
             if (tabFood) tabFood.textContent = t.food;
+            if (tabBirthday) tabBirthday.textContent = t.birthday;
 
-            // dark toggle text
             const darkText = document.getElementById('darkToggleText');
             if (darkText) darkText.textContent = darkMode ? t.darkOn : t.darkOff;
 
-            // alt texts
             const logo = document.getElementById('mainLogo');
             if (logo) logo.alt = t.logoAlt;
-            const ownerImg = document.getElementById('ownerImg');
-            if (ownerImg) ownerImg.alt = t.ownerAlt;
 
-            // language toggle button text
+            // owner button text
+            const ownerBtnText = document.getElementById('ownerBtnText');
+            if (ownerBtnText) ownerBtnText.textContent = t.ownerButton;
+
             const langSpan = document.getElementById('langToggleText');
             if (langSpan) langSpan.textContent = t.langToggle;
 
-            // back to top aria-label
             const backBtn = document.getElementById('backTopBtn');
             if (backBtn) backBtn.setAttribute('aria-label', t.backToTop);
 
-            // dark toggle icon
             const darkIcon = document.querySelector('#darkToggleBtn i');
             if (darkIcon) {
                 darkIcon.className = darkMode ? 'fas fa-sun' : 'fas fa-moon';
             }
+
+            // modal translations
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSub = document.getElementById('modalSub');
+            const btn1 = document.getElementById('modalBtnAtitoFashion');
+            const btn2 = document.getElementById('modalBtnAtitoOo');
+            if (modalTitle) modalTitle.textContent = t.modalTitle;
+            if (modalSub) modalSub.textContent = t.modalSub;
+            if (btn1) btn1.innerHTML = '<i class="fab fa-instagram"></i> ' + t.modalBtn1;
+            if (btn2) btn2.innerHTML = '<i class="fab fa-instagram"></i> ' + t.modalBtn2;
         }
 
         // ========================================================================
@@ -1443,7 +1752,6 @@
             const sectionsArea = document.getElementById('sectionsArea');
             if (!sectionsArea || !currentMenuData) return;
 
-            // preserve scroll position hint
             const scrollDiv = document.getElementById('scrollMenuContainer');
             const oldScrollLeft = scrollDiv ? scrollDiv.scrollLeft : 0;
 
@@ -1452,7 +1760,9 @@
 
             const filtered = currentMenuData.filter(c => {
                 if (selectedTab === 'drinks') return c.category === 'drink';
-                else return c.category === 'food';
+                else if (selectedTab === 'food') return c.category === 'food';
+                else if (selectedTab === 'birthday') return c.category === 'birthday';
+                return false;
             });
 
             filtered.forEach(cat => {
@@ -1517,7 +1827,6 @@
             applyRTL();
             applyStaticTranslations();
 
-            // restore scroll position
             if (scrollDiv) {
                 scrollDiv.scrollLeft = oldScrollLeft;
                 setTimeout(updateScrollHints, 80);
@@ -1534,7 +1843,9 @@
 
             const filtered = currentMenuData.filter(c => {
                 if (selectedTab === 'drinks') return c.category === 'drink';
-                else return c.category === 'food';
+                else if (selectedTab === 'food') return c.category === 'food';
+                else if (selectedTab === 'birthday') return c.category === 'birthday';
+                return false;
             });
 
             filtered.forEach((cat, idx) => {
@@ -1545,7 +1856,7 @@
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     allSections.forEach(s => s.classList.toggle('active-section', s.dataset
-                    .sectionId === cat.id));
+                        .sectionId === cat.id));
                     btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 });
                 container.appendChild(btn);
@@ -1563,7 +1874,6 @@
                 setTimeout(updateScrollHints, 100);
             }
 
-            // sync active cat-btn with active section
             const activeSec = document.querySelector('.menu-section.active-section');
             if (activeSec) {
                 const activeId = activeSec.dataset.sectionId;
@@ -1633,10 +1943,8 @@
         function toggleLanguage() {
             currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
             localStorage.setItem('softroof_lang', currentLanguage);
-            // re-render everything
             if (currentMenuData) renderMenu();
             applyStaticTranslations();
-            // update dark toggle text after lang change
             const t = currentLanguage === 'ar' ? TRANSLATIONS.ar : TRANSLATIONS.en;
             const darkText = document.getElementById('darkToggleText');
             if (darkText) darkText.textContent = darkMode ? t.darkOn : t.darkOff;
@@ -1747,10 +2055,60 @@
         }, 100);
 
         // ========================================================================
+        //  MODAL (owner popup)
+        // ========================================================================
+        const modalOverlay = document.getElementById('ownerModal');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalBox = document.querySelector('.modal-box');
+
+        function openModal() {
+            modalOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // click on owner button (small)
+        const ownerBtn = document.getElementById('ownerBtn');
+        if (ownerBtn) {
+            ownerBtn.addEventListener('click', openModal);
+        }
+
+        // close button
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', closeModal);
+        }
+
+        // click outside modal content
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+        // modal buttons - open Instagram links
+        document.querySelectorAll('.modal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const url = btn.getAttribute('data-url');
+                if (url) {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                }
+                closeModal();
+            });
+        });
+
+        // ========================================================================
         //  INIT
         // ========================================================================
         document.addEventListener('DOMContentLoaded', function() {
-            // restore language
             const savedLang = localStorage.getItem('softroof_lang');
             if (savedLang === 'ar' || savedLang === 'en') currentLanguage = savedLang;
             else currentLanguage = 'en';
@@ -1758,7 +2116,6 @@
             initDarkMode();
             loadEmbeddedMenu();
 
-            // event listeners
             document.getElementById('langToggleBtn')?.addEventListener('click', toggleLanguage);
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.addEventListener('click', () => switchTab(tab.dataset.tab));
