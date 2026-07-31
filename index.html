@@ -1904,12 +1904,24 @@
 
             // Re-initialize Intersection Observer for new elements
             initScrollReveal();
+            initSectionObserver();
         }
 
         // ========================================================================
         //  SCROLL REVEAL (Intersection Observer)
         // ========================================================================
         let observer = null;
+        let sectionObserver = null;
+
+        function activateSection(sectionId) {
+            allSections.forEach(sec => {
+                sec.classList.toggle('active-section', sec.dataset.sectionId === sectionId);
+            });
+
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.sectionId === sectionId);
+            });
+        }
 
         function initScrollReveal() {
             // Disconnect old observer if exists
@@ -1924,7 +1936,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Unobserve after animation to save resources
                         observer.unobserve(entry.target);
                     }
                 });
@@ -1934,6 +1945,27 @@
             });
 
             elements.forEach(el => observer.observe(el));
+        }
+
+        function initSectionObserver() {
+            if (sectionObserver) {
+                sectionObserver.disconnect();
+            }
+
+            if (!allSections.length) return;
+
+            sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activateSection(entry.target.dataset.sectionId);
+                    }
+                });
+            }, {
+                threshold: 0.25,
+                rootMargin: '-20% 0px -35% 0px'
+            });
+
+            allSections.forEach(sec => sectionObserver.observe(sec));
         }
 
         // ========================================================================
@@ -1957,11 +1989,10 @@
                 const btn = document.createElement('button');
                 btn.className = 'cat-btn reveal-btn' + (idx === 0 ? ' active' : '');
                 btn.textContent = getCategoryDisplayName(cat);
+                btn.dataset.sectionId = cat.id;
                 btn.style.transitionDelay = (idx * 0.05) + 's';
                 btn.addEventListener('click', () => {
-                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    allSections.forEach(s => s.classList.toggle('active-section', s.dataset.sectionId === cat.id));
+                    activateSection(cat.id);
                     btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 });
                 fragment.appendChild(btn);
@@ -1982,15 +2013,7 @@
 
             const activeSec = document.querySelector('.menu-section.active-section');
             if (activeSec) {
-                const activeId = activeSec.dataset.sectionId;
-                document.querySelectorAll('.cat-btn').forEach((btn, i) => {
-                    const cat = filtered[i];
-                    if (cat && cat.id === activeId) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                });
+                activateSection(activeSec.dataset.sectionId);
             }
 
             // Observe new buttons
